@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="20"
+   height="40.000004"
+   viewBox="0 0 16 32.000003"
+   version="1.1"
+   id="svg2"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="check.svg">
+  <metadata
+     id="metadata30">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs28" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1018"
+     id="namedview26"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-page="true"
+     inkscape:bbox-paths="false"
+     inkscape:zoom="4.7568142"
+     inkscape:cx="34.625845"
+     inkscape:cy="0.23438773"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     showborder="false"
+     inkscape:showpageshadow="false" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect3782"
+     width="16"
+     height="16"
+     x="-2.3841858e-007"
+     y="-1.7763568e-014"
+     inkscape:export-filename="C:\Users\sHaDeOfMiNe\Desktop\g2991-4.png"
+     inkscape:export-xdpi="72"
+     inkscape:export-ydpi="72" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect3782-1"
+     width="16"
+     height="16"
+     x="-2.3841858e-007"
+     y="16.000002"
+     inkscape:export-filename="C:\Users\sHaDeOfMiNe\Desktop\g2991-4.png"
+     inkscape:export-xdpi="72"
+     inkscape:export-ydpi="72" />
+  <path
+     style="fill:#000000;stroke:none"
+     inkscape:connector-curvature="0"
+     d="m 7.4746462,19.035624 c 0.9241676,-0.112568 1.8802976,0.06601 2.7176048,0.470419 1.487008,0.720575 2.578635,2.216613 2.760688,3.864825 0.13689,0.992263 -0.05281,2.026219 -0.510723,2.917031 -0.73586,1.439757 -2.207577,2.488994 -3.8210472,2.664797 C 6.9368237,29.191034 5.1600612,28.463512 4.1066487,27.129377 3.2637812,26.091256 2.8656262,24.700834 3.0462913,23.376428 3.1741438,22.216006 3.7536588,21.120906 4.6076462,20.328762 5.3928388,19.608884 6.4087287,19.126649 7.4746463,19.035624 m 2.5987847,3.007363 c -0.8859497,0.88595 -1.7996922,1.7448 -2.6641022,2.652984 -0.503775,-0.480844 -0.9860075,-0.982537 -1.481445,-1.471719 -0.1445325,-0.172325 -0.43151,-0.159818 -0.58021,6.25e-4 -0.20012,0.194563 -0.3939875,0.394682 -0.5927175,0.590632 -0.1646825,0.150784 -0.17163,0.437072 -0.016675,0.597584 0.787975,0.786584 1.5745575,1.573863 2.3611425,2.361138 0.149395,0.180665 0.4683375,0.181362 0.6184275,6.25e-4 1.158335,-1.156944 2.3131947,-2.316669 3.4736147,-3.470835 0.11882,-0.103534 0.212628,-0.256403 0.177885,-0.419697 -0.0118,-0.173018 -0.15565,-0.280031 -0.266827,-0.392597 -0.166768,-0.158428 -0.318248,-0.332837 -0.493353,-0.482928 -0.152175,-0.130634 -0.402325,-0.118822 -0.535737,0.03405 z"
+     id="path4-0"
+     inkscape:export-filename="C:\Users\sHaDeOfMiNe\Desktop\g2991-4.png"
+     inkscape:export-xdpi="72"
+     inkscape:export-ydpi="72" />
+  <path
+     style="fill:#ffffff;stroke:none"
+     inkscape:connector-curvature="0"
+     d="m 7.4746463,3.0356248 c 0.924168,-0.112568 1.880298,0.06601 2.7176047,0.470419 1.487008,0.720575 2.578635,2.216613 2.760688,3.864825 0.136889,0.992263 -0.05281,2.0262192 -0.510723,2.9170312 -0.73586,1.439757 -2.207577,2.488994 -3.8210467,2.664797 -1.684345,0.238337 -3.461108,-0.489184 -4.51452,-1.823319 -0.842868,-1.038121 -1.241023,-2.4285432 -1.060358,-3.7529492 0.127853,-1.160422 0.707368,-2.255522 1.561355,-3.047666 0.785193,-0.719878 1.801083,-1.202113 2.867,-1.293138 m 2.5987847,3.007363 c -0.8859497,0.88595 -1.7996917,1.7448 -2.6641017,2.652984 -0.503775,-0.480844 -0.986008,-0.982537 -1.481445,-1.471719 -0.144533,-0.172325 -0.43151,-0.159818 -0.58021,6.25e-4 -0.20012,0.194563 -0.393988,0.394682 -0.592718,0.590632 -0.164682,0.150784 -0.17163,0.437072 -0.01667,0.597584 0.787975,0.7865842 1.574558,1.5738632 2.361143,2.3611382 0.149395,0.180665 0.468337,0.181362 0.618427,6.25e-4 1.158335,-1.156944 2.3131947,-2.3166692 3.4736137,-3.4708352 0.11882,-0.103534 0.212628,-0.256403 0.177886,-0.419697 -0.0118,-0.173018 -0.15565,-0.280031 -0.266827,-0.392597 -0.166768,-0.158428 -0.318248,-0.332837 -0.493353,-0.482928 -0.152175,-0.130634 -0.402325,-0.118822 -0.535737,0.03405 z"
+     id="path4-0-1"
+     inkscape:export-filename="C:\Users\sHaDeOfMiNe\Desktop\g2991-4.png"
+     inkscape:export-xdpi="72"
+     inkscape:export-ydpi="72" />
+</svg>
