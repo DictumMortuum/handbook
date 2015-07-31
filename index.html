@@ -56,10 +56,56 @@
 
 		$(function() {
 			Handbook.init({
-				"url"    : "https://docs.google.com/spreadsheets/d/15jEli8H7XhTW7Lh7CurOTeznBws0uqEd2iM3FBeQMIw/pubhtml",
-				"sheet"  : "cleric",
-				"section": "#section_template",
-				"element": "#list_template"
+				"url"     : "https://docs.google.com/spreadsheets/d/15jEli8H7XhTW7Lh7CurOTeznBws0uqEd2iM3FBeQMIw/pubhtml",
+				"sheet"   : "cleric",
+				"section" : "#section_template",
+				"element" : "#list_template",
+				"rating"  : true,
+				"format"  : {
+					item: function(data) {
+
+						data.description = data.description.replace(/\n/g, '</p><p>')
+						data.book        = Handbook.rating(data.name, data.type)
+						data['ratename'] = data.name.replace(/[ \*\'\/]/g,'')
+						data['ratetype'] = data.type.replace(/[ \*\'\/]/g,'')
+
+						return data
+					},
+					page: function() {
+						$('section').isotope({
+							itemSelector: '.masonry',
+							percentPosition: true,
+							getSortData: {
+								rating: '[data-rating] parseInt'
+							},
+							sortBy: 'rating',
+							percentPosition: true,
+							sortAscending: false,
+							masonry: {
+								columnWidth: '.sizer',
+								gutter: '.gutter-sizer'
+							}
+						})
+
+						$.each(['.navy', '.black', '.blue', '.ared'], function(i, data) {
+							$('h4' + data).click(function(event) {
+								if(event.ctrlKey) {
+									$('section').isotope({filter: data})
+								} else {
+									$(this).parent().parent().isotope({filter: data})
+								}
+							})
+						})
+						
+						$('section > .heading').click(function(event) {
+							if(event.ctrlKey) {
+								$('section').isotope({filter: '*'})
+							} else {
+								$(this).parent().isotope({filter: '*'})
+							}
+						})
+					}
+				}
 			})
 		})
 		</script>

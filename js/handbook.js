@@ -7,11 +7,20 @@
 
 		config = arg
 
+		config.format.section = arg.format.section || identity
+		config.format.item    = arg.format.item    || identity
+		config.format.page    = arg.format.page    || function() {}
+		config.rating         = arg.rating         || false
+
 		Tabletop.init({
 			key: arg.url,
 			callback: sections,
 			simpleSheet: true
 		})
+	}
+
+	function identity(data) {
+		return data
 	}
 
 	function template(selector, data) {
@@ -23,14 +32,14 @@
 		return $(rendered)
 	}
 
-	function format(name, type) {
+	function id(name, type) {
 		return name.replace(/[ \*\'\/]/g,'') + " " + type.replace(/[ \*\'\/]/g,'')
 	}
 
 	function ratings(tabletop) {
 
 		$.each(tabletop.sheets("DATA").all(), function(i, data) {
-			var temp = format(data.name, data.type)
+			var temp = id(data.name, data.type)
 
 			if(!(temp in rate)) {
 				rate[temp] = 1
@@ -40,62 +49,38 @@
 		})
 	}
 
-	function rating(name, type) {
-		return rate[format(name, type)] == null ? 0 : rate[format(name, type)]
+	Handbook.rating = function(name, type) {
+		return rate[id(name, type)] == null ? 0 : rate[id(name, type)]
 	}
 
 	function sections(data, tabletop) {
-		ratings(tabletop)
+
+		if(config.rating) {
+			ratings(tabletop)
+		}
 
 		$.each(tabletop.sheets('info').all(), function(i, data) {
+
+			data = config.format.section(data)
+
 			$('#handbook').append(template(config.section, data))
 
 			if(data.html != "") {
 				items(tabletop, data.code)
 			}
-
-			$('#' + data.code).isotope({
-				itemSelector: '.masonry',
-				percentPosition: true,
-				getSortData: {
-					rating: '[data-rating] parseInt'
-				},
-				sortBy: 'rating',
-				percentPosition: true,
-				sortAscending: false,
-				masonry: {
-					columnWidth: '.sizer',
-					gutter: '.gutter-sizer'
-				}
-			})
 		})
 
-		$.each(['.navy', '.black', '.blue', '.ared'], function(i, data) {
-			$('h4' + data).click(function(event) {
-				if(event.ctrlKey) {
-					$('section').isotope({filter: data})
-				} else {
-					$(this).parent().parent().isotope({filter: data})
-				}
-			})
-		})
-		
-		$('section > .heading').click(function(event) {
-			if(event.ctrlKey) {
-				$('section').isotope({filter: '*'})
-			} else {
-				$(this).parent().isotope({filter: '*'})
-			}
-		})
+		config.format.page()
 	}
 
 	function items(tabletop, section) {
+
 		$.each(tabletop.sheets(config.sheet).all(), function(i, data) {
+
 			if(data.type === section) {
-				data.description = data.description.replace(/\n/g, '</p><p>')
-				data.book        = rating(data.name, data.type)
-				data['ratename'] = data.name.replace(/[ \*\'\/]/g,''),
-				data['ratetype'] = data.type.replace(/[ \*\'\/]/g,''),
+
+				data = config.format.item(data)
+
 				template(config.element, data).appendTo('#' + section)
 			}
 		})
