@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Wild Shape</title>
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="handbook.css">
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/isotope.pkgd.min.js"></script>
+		<script src="js/mustache.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/handbook.js"></script>
+		<script src="js/sql.js"></script>
+
+		<script id="animal_template" type="x-tmpl-mustache">
+			<div id="{{selector}}" class="tile {{class}}" data-rating="0" data-size="{{size}}" data-type="{{type}}"
+				data-spd="{{speed}}" data-att="{{attacks}}" data-str="{{str}}" data-dex="{{dex}}" data-con="{{con}}"
+				data-nat="{{natural}}" data-spc="{{special}}" data-name="{{name}}" data-total="0">
+				<h4 class="navy black blue red">
+				<span class="rating" onclick="saveRating('{{selector}}',this,event)"></span>
+				{{name}}
+				<span class="score"></span>
+				</h4>
+				<div class="icon">
+					<div class="book"></div>
+					<div class="beast"></div>
+					<div class="summoner"></div>
+					<div class="master"></div>
+				</div>
+				<hr />
+				<div class="desc">
+					<div class="size">{{size}}</div>
+					<div class="type">{{type}}</div>
+					<div class="spd">{{speed}}</div>
+					<div class="att">{{attacks}}</div>
+					<div class="str">{{str}}</div>
+					<div class="dex">{{dex}}</div>
+					<div class="con">{{con}}</div>
+					<div class="nat">{{natural}}</div>
+					<div class="spc">{{special}}</div>
+					<div class="tot"></div>
+					<div class="def"></div>
+					<div class="off"></div>
+					<p>{{{desc}}}</p>
+				</div>
+			</div>
+		</script>
+
+		<script>
+			function format_page() {
+
+                Handbook.ajax({
+                    "action": "count",
+                    "jsonp": "getRating"
+                });
+
+                var $animal = $('#animal');
+
+                $animal.isotope({
+					itemSelector: '.tile',
+					percentPosition: true,
+					masonry: {
+						columnWidth: '.sizer',
+						gutter: '.gutter'
+					},
+					sortAscending: false,
+					getSortData: {
+						rating: Handbook.utils.rating,
+						type:   '[data-type]',
+						att:    Handbook.utils.att,
+						str:    Handbook.utils.str,
+						dex:    Handbook.utils.dex,
+						con:    Handbook.utils.con,
+						nat:    Handbook.utils.nat,
+						color:  Handbook.utils.color,
+						size:   Handbook.utils.size,
+						spd:    Handbook.utils.spd,
+						spc:    Handbook.utils.spc,
+						tot:    '.tot parseFloat',
+						def:    '.def parseFloat',
+						off:    '.off parseFloat'
+					}
+				});
+
+				$animal.find('.tile').each(function() {
+					var ret = Handbook.utils.total(this);
+					$(this).data('total', ret);
+                    ret = Handbook.utils.offense(this);
+                    $(this).data('off', ret);
+                    ret = Handbook.utils.defense(this);
+                    $(this).data('def', ret);
+				});
+
+                $animal.find('.tile').each(function() {
+                    var ret = $(this).data('total');
+                    $(this).find('.tot').html(Handbook.utils.normalize('tot',ret));
+                    ret = $(this).data('def');
+                    $(this).find('.def').html(Handbook.utils.normalize('def',ret));
+                    ret = $(this).data('off');
+                    $(this).find('.off').html(Handbook.utils.normalize('off',ret));
+                });
+
+				$animal.find('.tile').each(function() {
+					var ret = $(this).data('total');
+					$(this).removeClass('navy blue black red');
+
+					var min = Handbook.utils.limits.tot[0];
+					var max = Handbook.utils.limits.tot[1];
+					var step = (max - min)/4;
+
+					if(ret >= max - step) {
+						$(this).addClass('navy');
+					} else if (ret >= max - step*2) {
+						$(this).addClass('blue');
+					} else if (ret >= max - step*3) {
+						$(this).addClass('black');
+					} else {
+						$(this).addClass('red');
+					}
+				});
+
+				$animal.isotope('updateSortData').isotope();
+
+				$animal.isotope({
+					sortBy: [ 'tot' ]
+				});
+
+				setup();
+			}
+
+			$(function() {
+				Handbook.init({
+					"rating"  : false,
+					"db"      : "druid.db",
+					"query"   : [
+						["select * from animal", format_animal, "#animal_template", "#animal"]
+					],
+					"callback" : format_page
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<div id="handbook">
+            <div class="menu">
+				<div class="link"><a href="index.html">Introduction</a></div>
+				<div class="link"><a href="animal.html">Wild Shape Forms</a></div>
+				<div class="link"><a href="#">Animal Companions</a></div>
+				<div class="link"><a href="#">Spellcasting</a></div>
+                <div class="link"><a href="changelog.html">Changelog</a></div>
+            </div>
+			<div id="animal" class="section third">
+				<div class="sizer"></div>
+				<div class="gutter"></div>
+			</div>
+		</div>
+    </body>
+</html>
